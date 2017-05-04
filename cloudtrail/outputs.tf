@@ -1,32 +1,32 @@
 // Outputs
-output "cloudtrail_id" {
+output "cloudtrail.id" {
   value = "${aws_cloudtrail.ct.id}"
 }
 
-output "cloudtrail_home_region" {
+output "cloudtrail.home_region" {
   value = "${aws_cloudtrail.ct.home_region}"
 }
 
-output "cloudtrail_arn" {
+output "cloudtrail.arn" {
   value = "${aws_cloudtrail.ct.arn}"
 }
 
-output "iam_role_cloudtrail_name" {
+output "cloudtrail.iam_role_name" {
   value = "${aws_iam_role.ct.name}"
 }
 
-output "iam_role_cloudtrail_arn" {
+output "cloudtrail.iam_role_arn" {
   value = "${aws_iam_role.ct.arn}"
 }
 
-output "cloudwatch_log_group_arn" {
+output "cloudtrail.cloudwatch_log_group_arn" {
   value = "${aws_cloudwatch_log_group.ct.arn}"
 }
 
-output "s3_bucket_id" {
+output "cloudtrail.s3_bucket_id" {
   value = "${aws_s3_bucket.bucket.id}"
 }
 
-output "s3_bucket_arn" {
+output "cloudtrail.s3_bucket_arn" {
   value = "${aws_s3_bucket.bucket.arn}"
 }
