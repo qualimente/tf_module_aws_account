@@ -4,7 +4,7 @@ data "template_file" "aws_s3_bucket_policy" {
 
   vars {
     aws_account_id = "${var.aws_account_id}"
-    s3_bucket_arn = "${aws_s3_bucket.bucket.arn}"
+    s3_bucket_arn  = "${aws_s3_bucket.bucket.arn}"
   }
 }
 
@@ -16,7 +16,9 @@ resource "aws_s3_bucket" "bucket" {
   versioning = {
     enabled = "false"
   }
+
   force_destroy = "${var.s3_force_destroy}"
+
   tags = {
     terraform = "true"
   }
@@ -26,4 +28,3 @@ resource "aws_s3_bucket_policy" "bucket" {
   bucket = "${aws_s3_bucket.bucket.id}"
   policy = "${data.template_file.aws_s3_bucket_policy.rendered}"
 }
-
