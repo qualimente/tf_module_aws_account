@@ -14,6 +14,7 @@ contained in this repo.
 | destroy   | Execute `kitchen destroy` for all modules                                                                     |
 | kitchen   | Execute `kitchen <command>`. Specify the command with the `COMMAND` argument to `make`                        |
 
+e.g. run a single test: `make kitchen COMMAND="verify minimal-aws"`
 
 **Typical Workflow:**
 
