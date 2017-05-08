@@ -23,7 +23,7 @@ variable "s3_bucket_name" {
 
 variable "s3_bucket_suffix" {
   type        = "string"
-  description = "S3 prefix path for logs"
+  description = "Optional S3 bucket suffix for CloudTrail logs"
   default     = ""
 }
 
