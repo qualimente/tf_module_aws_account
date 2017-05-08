@@ -1,11 +1,6 @@
 // Setup a default CloudTrail trail.
 
 //Variables
-variable "aws_bucket_prefix" {
-  type        = "string"
-  description = "Prefix in front of S3 bucket"
-}
-
 variable "aws_account_id" {
   type        = "string"
   description = "AWS account ID"
