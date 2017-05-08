@@ -1,5 +1,5 @@
 .PHONY: converge verify destroy test kitchen
-TERRAFORM_SPEC_VERSION := 0.8.8-1
+TERRAFORM_SPEC_VERSION := 0.9.4
 
 define execute
 	if [ -z "$(CI)" ]; then \
@@ -12,7 +12,7 @@ define execute
 			-v $(shell pwd):/module \
 			-v $(HOME)/.aws:/root/.aws:ro \
 			-v $(HOME)/.netrc:/root/.netrc:ro \
-			johnrengelman/terraform-spec:$(TERRAFORM_SPEC_VERSION) \
+			qualimente/terraform-spec:$(TERRAFORM_SPEC_VERSION) \
 			kitchen $(1) $(KITCHEN_OPTS); \
 	else \
 		echo bundle exec kitchen $(1) $(KITCHEN_OPTS); \
