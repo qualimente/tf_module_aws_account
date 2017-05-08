@@ -7,7 +7,6 @@ module "it_minimal" {
   aws_region          = "us-west-2"
   aws_cloudtrail_name = "minimal"
   s3_bucket_name      = "qm-infra-module-ct-logs"
-  s3_bucket_suffix   = "-minimal"
 
   // required to have a repeatable test
   s3_force_destroy    = true

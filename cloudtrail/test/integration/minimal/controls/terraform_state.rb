@@ -48,11 +48,11 @@ control 'terraform_state' do
 
       describe('cloudtrail.s3_bucket_id') do
         subject { outputs['cloudtrail.s3_bucket_id'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "qm-infra-module-ct-logs-minimal"}) }
+        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "qm-infra-module-ct-logs"}) }
       end
       describe('cloudtrail.s3_bucket_arn') do
         subject { outputs['cloudtrail.s3_bucket_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:s3:::qm-infra-module-ct-logs-minimal"}) }
+        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:s3:::qm-infra-module-ct-logs"}) }
       end
 
     end
