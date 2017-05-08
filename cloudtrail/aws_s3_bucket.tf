@@ -10,7 +10,7 @@ data "template_file" "aws_s3_bucket_policy" {
 
 resource "aws_s3_bucket" "bucket" {
   # keep things consistrent & prevent conflicts across envs.
-  bucket = "${var.aws_bucket_prefix}-${var.s3_bucket_name}"
+  bucket = "${var.s3_bucket_name}${var.s3_bucket_suffix}"
   acl    = "private"
 
   versioning = {

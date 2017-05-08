@@ -3,9 +3,12 @@
 module "it_minimal" {
   source = "../../../" //minimal integration test
 
-  aws_account_id      = "621293099824"
+  aws_account_id      = "621293099824" // "139710491120" // "621293099824"
   aws_region          = "us-west-2"
-  aws_cloudtrail_name = "minimal_name"
-  aws_bucket_prefix   = "minimal"
+  aws_cloudtrail_name = "minimal"
   s3_bucket_name      = "qm-infra-module-ct-logs"
+  s3_bucket_suffix   = "-minimal"
+
+  // required to have a repeatable test
+  s3_force_destroy    = true
 }

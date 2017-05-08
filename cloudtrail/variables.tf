@@ -26,10 +26,10 @@ variable "s3_bucket_name" {
   description = "S3 Bucket for logs"
 }
 
-variable "s3_bucket_prefix" {
+variable "s3_bucket_suffix" {
   type        = "string"
   description = "S3 prefix path for logs"
-  default     = "/"
+  default     = ""
 }
 
 variable "s3_force_destroy" {
