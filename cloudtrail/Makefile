@@ -1,4 +1,4 @@
-.PHONY: converge verify destroy test kitchen
+.PHONY: format converge verify destroy test kitchen
 TERRAFORM_SPEC_VERSION := 0.9.4
 
 define execute
@@ -19,6 +19,12 @@ define execute
 		bundle exec kitchen $(1) $(KITCHEN_OPTS); \
 	fi;
 endef
+
+format:
+	@docker run --rm -it \
+		-v $(shell pwd):/module \
+		qualimente/terraform-spec:$(TERRAFORM_SPEC_VERSION) \
+		terraform fmt
 
 converge:
 	@$(call execute,converge)

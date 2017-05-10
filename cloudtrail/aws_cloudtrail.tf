@@ -15,7 +15,7 @@ data "template_file" "aws_iam_cloudtrail_to_cloudwatch_policy" {
 
 resource "aws_cloudwatch_log_group" "ct" {
   name = "/aws/cloudtrail/${var.aws_cloudtrail_name}"
-  
+
   tags {
     terraform = "true"
   }

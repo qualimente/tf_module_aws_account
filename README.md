@@ -18,7 +18,7 @@ e.g. run a single test: `make kitchen COMMAND="verify minimal-aws"`
 
 **Typical Workflow:**
 
-`make destroy && make converge && make verify`
+`make destroy && make format && make converge && make verify`
 
 ## Running Test Kitchen for a single module
 
