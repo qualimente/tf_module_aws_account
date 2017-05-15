@@ -16,17 +16,68 @@ control 'terraform_state' do
   describe 'the Terraform state file' do
     #require 'pry'; binding.pry; #uncomment to jump into the debugger
 
-    outputs = tf_state_json.modules[1]['outputs']
-    describe 'outputs' do
+    resources = tf_state_json.modules[1]['resources']
+    policy = resources['aws_iam_account_password_policy.account_password_policy']['primary']
+    describe 'policy' do
 
-      describe('aws_account.id') do
-        subject { outputs['aws_account.id'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "minimal"}) }
+      describe('id') do
+        subject { policy['id'] }
+        it { is_expected.to eq("iam-account-password-policy") }
       end
 
-      describe('aws_account.home_region') do
-        subject { outputs['aws_account.home_region'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "us-west-2"}) }
+      attributes = policy['attributes']
+      describe 'policy attributes' do
+
+        describe('allow users to change password') do
+          subject { attributes['allow_users_to_change_password'] }
+          it { is_expected.to eq("true") }
+        end
+
+        describe('expire passwords') do
+          subject { attributes['expire_passwords'] }
+          it { is_expected.to eq("true") }
+        end
+
+        describe('hard expiration for password') do
+          subject { attributes['hard_expiry'] }
+          it { is_expected.to eq("false") }
+        end
+
+        describe('maximum password age in days') do
+          subject { attributes['max_password_age'] }
+          it { is_expected.to eq("90") }
+        end
+
+        describe('minimum length for password') do
+          subject { attributes['minimum_password_length'] }
+          it { is_expected.to eq("12") }
+        end
+
+        describe('password reuse check for how many previous passwords') do
+          subject { attributes['password_reuse_prevention'] }
+          it { is_expected.to eq("12") }
+        end
+
+        describe('require lowercase characters in password') do
+          subject { attributes['require_lowercase_characters'] }
+          it { is_expected.to eq("true") }
+        end
+
+        describe('require numbers in password') do
+          subject { attributes['require_numbers'] }
+          it { is_expected.to eq("true") }
+        end
+
+        describe('require symbols in password') do
+          subject { attributes['require_symbols'] }
+          it { is_expected.to eq("false") }
+        end
+
+        describe('require uppercase characters in password') do
+          subject { attributes['require_uppercase_characters'] }
+          it { is_expected.to eq("true") }
+        end
+
       end
 
     end

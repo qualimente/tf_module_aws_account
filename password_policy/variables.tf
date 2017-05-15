@@ -13,7 +13,7 @@ variable "aws_region" {
 
 variable "aws_password_minimum_length" {
   description = "The mimimum length of password to apply."
-  default     = "16"
+  default     = "10"
 }
 
 variable "aws_password_require_lowercase" {
@@ -33,7 +33,7 @@ variable "aws_password_require_uppercase" {
 
 variable "aws_password_require_symbols" {
   description = "Require symbols in password, default set to false"
-  default     = false
+  default     = true
 }
 
 variable "aws_password_max_age" {
@@ -43,7 +43,7 @@ variable "aws_password_max_age" {
 
 variable "aws_password_reuse" {
   description = "Defines number of previous passwords to check against for reuse, default 16"
-  default     = "16"
+  default     = "8"
 }
 
 variable "aws_password_allow_change_by_user" {
@@ -53,5 +53,5 @@ variable "aws_password_allow_change_by_user" {
 
 variable "aws_password_expiration_lock" {
   description = "at login check for expiring password and lock if expired, default set to true"
-  default     = false
+  default     = true
 }
