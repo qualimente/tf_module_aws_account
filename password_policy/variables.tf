@@ -1,16 +1,6 @@
 // Setup a default password_policy variables
 
 //Variables
-variable "aws_account_id" {
-  type        = "string"
-  description = "AWS account ID"
-}
-
-variable "aws_region" {
-  type        = "string"
-  description = "AWS region"
-}
-
 variable "aws_password_minimum_length" {
   description = "The mimimum length of password to apply."
   default     = "10"
