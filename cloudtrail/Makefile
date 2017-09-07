@@ -1,5 +1,5 @@
 .PHONY: format converge verify destroy test kitchen
-TERRAFORM_SPEC_VERSION := 0.9.4
+TERRAFORM_SPEC_VERSION := 0.9.11
 
 define execute
 	if [ -z "$(CI)" ]; then \
