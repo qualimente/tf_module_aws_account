@@ -8,7 +8,7 @@ module "it_minimal" {
   aws_account_id      = "${data.aws_caller_identity.current.account_id}"
   aws_region          = "us-west-2"
   aws_cloudtrail_name = "minimal"
-  s3_bucket_name      = "qm-infra-module-ct-logs-2017-09-07"
+  s3_bucket_name      = "qm-infra-module-ct-logs-2017-09-14"
 
   // required to have a repeatable test
   s3_force_destroy = true
