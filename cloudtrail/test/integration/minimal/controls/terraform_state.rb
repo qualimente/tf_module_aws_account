@@ -29,12 +29,12 @@ control 'terraform_state' do
       end
 
       describe('cloudtrail.arn') do
-        subject { outputs['cloudtrail.arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:cloudtrail:us-west-2:139710491120:trail/minimal"}) }
+        subject { outputs['cloudtrail.arn']['value'] }
+        it { is_expected.to match(/arn:aws:cloudtrail:[\w-]+:[\d]+:trail\/minimal/) }
       end
       describe('cloudtrail.cloudwatch_log_group_arn') do
-        subject { outputs['cloudtrail.cloudwatch_log_group_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => 'arn:aws:logs:us-west-2:139710491120:log-group:/aws/cloudtrail/minimal:*'}) }
+        subject { outputs['cloudtrail.cloudwatch_log_group_arn']['value'] }
+        it { is_expected.to match(/arn:aws:logs:[\w-]+:[\d]+:log-group:\/aws\/cloudtrail\/minimal:\*/) }
       end
 
       describe('cloudtrail.iam_role_name') do
@@ -42,8 +42,8 @@ control 'terraform_state' do
         it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "minimal-CloudTrailToCloudWatch"}) }
       end
       describe('cloudtrail.iam_role_arn') do
-        subject { outputs['cloudtrail.iam_role_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:iam::139710491120:role/minimal-CloudTrailToCloudWatch"}) }
+        subject { outputs['cloudtrail.iam_role_arn']['value'] }
+        it { is_expected.to match(/arn:aws:iam::[\d]+:role\/minimal-CloudTrailToCloudWatch/) }
       end
 
       describe('cloudtrail.s3_bucket_id') do
