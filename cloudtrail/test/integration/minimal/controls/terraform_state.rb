@@ -4,8 +4,6 @@ require 'rspec/expectations'
 
 terraform_state = attribute 'terraform_state', {}
 
-expect_bucket_name = "qm-infra-module-ct-logs-2017-09-07"
-
 control 'terraform_state' do
   tf_state_json = json(terraform_state)
 
@@ -49,12 +47,12 @@ control 'terraform_state' do
       end
 
       describe('cloudtrail.s3_bucket_id') do
-        subject { outputs['cloudtrail.s3_bucket_id'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => expect_bucket_name}) }
+        subject { outputs['cloudtrail.s3_bucket_id']['value'] }
+        it { is_expected.to match(/^qm-test-cloudtrail-logs-[\w]+/)}
       end
       describe('cloudtrail.s3_bucket_arn') do
-        subject { outputs['cloudtrail.s3_bucket_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:s3:::#{expect_bucket_name}"}) }
+        subject { outputs['cloudtrail.s3_bucket_arn']['value'] }
+        it { is_expected.to match(/^arn:aws:s3:::qm-test-cloudtrail-logs-[\w]+/)}
       end
 
     end
