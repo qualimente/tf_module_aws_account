@@ -34,6 +34,149 @@ resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
   depends_on = ["aws_config_configuration_recorder.config"]
 }
 
+resource "aws_config_config_rule" "S3_BUCKET_LOGGING_ENABLED" {
+  name = "${var.aws_config_name}-config_rule_S3_BUCKET_LOGGING_ENABLED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_LOGGING_ENABLED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_READ_PROHIBITED" {
+  name = "${var.aws_config_name}-config_rule_S3_BUCKET_PUBLIC_READ_PROHIBITED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_WRITE_PROHIBITED" {
+  name = "${var.aws_config_name}-config_rule_S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "S3_BUCKET_SSL_REQUESTS_ONLY" {
+  name = "${var.aws_config_name}-config_rule_S3_BUCKET_SSL_REQUESTS_ONLY"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_SSL_REQUESTS_ONLY"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "S3_BUCKET_VERSIONING_ENABLED" {
+  name = "${var.aws_config_name}-config_rule_S3_BUCKET_VERSIONING_ENABLED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_VERSIONING_ENABLED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "ACM_CERTIFICATE_EXPIRATION_CHECK" {
+  name = "${var.aws_config_name}-config_rule_S3_ACM_CERTIFICATE_EXPIRATION_CHECK"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "ACM_CERTIFICATE_EXPIRATION_CHECK"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "IAM_USER_GROUP_MEMBERSHIP_CHECK" {
+  name = "${var.aws_config_name}-config_rule_S3_IAM_USER_GROUP_MEMBERSHIP_CHECK"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "IAM_USER_GROUP_MEMBERSHIP_CHECK"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "IAM_USER_NO_POLICIES_CHECK" {
+  name = "${var.aws_config_name}-config_rule_S3_IAM_USER_NO_POLICIES_CHECK"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "IAM_USER_NO_POLICIES_CHECK"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "ROOT_ACCOUNT_MFA_ENABLED" {
+  name = "${var.aws_config_name}-config_rule_S3_ROOT_ACCOUNT_MFA_ENABLED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "ROOT_ACCOUNT_MFA_ENABLED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "CLOUD_TRAIL_ENABLED" {
+  name = "${var.aws_config_name}-config_rule_CLOUD_TRAIL_ENABLED"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "CLOUD_TRAIL_ENABLED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "INSTANCES_IN_VPC" {
+  name = "${var.aws_config_name}-config_rule_S3_INSTANCES_IN_VPC"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "INSTANCES_IN_VPC"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "CLOUDFORMATION_STACK_NOTIFICATION_CHECK" {
+  name = "${var.aws_config_name}-config_rule_S3_CLOUDFORMATION_STACK_NOTIFICATION_CHECK"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "CLOUDFORMATION_STACK_NOTIFICATION_CHECK"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
+resource "aws_config_config_rule" "CLOUDWATCH_ALARM_RESOURCE_CHECK" {
+  name = "${var.aws_config_name}-config_rule_S3_CLOUDWATCH_ALARM_RESOURCE_CHECK"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "CLOUDWATCH_ALARM_RESOURCE_CHECK"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.config"]
+}
+
 resource "aws_iam_role" "config" {
   name               = "${var.aws_config_name}-config_iam_role"
   assume_role_policy = "${data.template_file.aws_iam_config_assume_role_policy.rendered}"

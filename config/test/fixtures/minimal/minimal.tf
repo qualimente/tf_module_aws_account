@@ -3,6 +3,6 @@
 module "it_minimal" {
   source = "../../../" //minimal integration test
 
-  aws_config_name   = "testing-skuenzli"
-  aws_bucket_prefix = "qm-infra-module-config-testing"
+  aws_config_name   = "testing-gjullianfk"
+  aws_bucket_prefix = "qm-infra-module-config-testing-2"
 }
