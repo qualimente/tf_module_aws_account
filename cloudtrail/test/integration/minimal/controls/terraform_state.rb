@@ -29,12 +29,12 @@ control 'terraform_state' do
       end
 
       describe('cloudtrail.arn') do
-        subject { outputs['cloudtrail.arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:cloudtrail:us-west-2:621293099824:trail/minimal"}) }
+        subject { outputs['cloudtrail.arn']['value'] }
+        it { is_expected.to match(/arn:aws:cloudtrail:[\w-]+:[\d]+:trail\/minimal/) }
       end
       describe('cloudtrail.cloudwatch_log_group_arn') do
-        subject { outputs['cloudtrail.cloudwatch_log_group_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => 'arn:aws:logs:us-west-2:621293099824:log-group:/aws/cloudtrail/minimal:*'}) }
+        subject { outputs['cloudtrail.cloudwatch_log_group_arn']['value'] }
+        it { is_expected.to match(/arn:aws:logs:[\w-]+:[\d]+:log-group:\/aws\/cloudtrail\/minimal:\*/) }
       end
 
       describe('cloudtrail.iam_role_name') do
@@ -42,17 +42,17 @@ control 'terraform_state' do
         it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "minimal-CloudTrailToCloudWatch"}) }
       end
       describe('cloudtrail.iam_role_arn') do
-        subject { outputs['cloudtrail.iam_role_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:iam::621293099824:role/minimal-CloudTrailToCloudWatch"}) }
+        subject { outputs['cloudtrail.iam_role_arn']['value'] }
+        it { is_expected.to match(/arn:aws:iam::[\d]+:role\/minimal-CloudTrailToCloudWatch/) }
       end
 
       describe('cloudtrail.s3_bucket_id') do
-        subject { outputs['cloudtrail.s3_bucket_id'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "qm-infra-module-ct-logs"}) }
+        subject { outputs['cloudtrail.s3_bucket_id']['value'] }
+        it { is_expected.to match(/^qm-test-cloudtrail-logs-[\w]+/)}
       end
       describe('cloudtrail.s3_bucket_arn') do
-        subject { outputs['cloudtrail.s3_bucket_arn'] }
-        it { is_expected.to eq({"sensitive" => false, "type" => "string", "value" => "arn:aws:s3:::qm-infra-module-ct-logs"}) }
+        subject { outputs['cloudtrail.s3_bucket_arn']['value'] }
+        it { is_expected.to match(/^arn:aws:s3:::qm-test-cloudtrail-logs-[\w]+/)}
       end
 
     end
