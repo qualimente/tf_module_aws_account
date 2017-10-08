@@ -9,10 +9,9 @@ define execute
 			-e AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID) \
 			-e AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY) \
 			-e AWS_SESSION_TOKEN=$(AWS_SESSION_TOKEN) \
-			-e USER=$(USER) \
+			-e USER=root \
 			-v $(shell pwd):/module \
 			-v $(HOME)/.aws:/root/.aws:ro \
-			-v $(HOME)/.netrc:/root/.netrc:ro \
 			qualimente/terraform-spec:$(TERRAFORM_SPEC_VERSION) \
 			kitchen $(1) $(KITCHEN_OPTS); \
 	else \
