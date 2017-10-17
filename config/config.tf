@@ -7,13 +7,21 @@ data "template_file" "aws_iam_config_policy" {
   template = "${file("${path.module}/aws_iam_config_policy.tpl")}"
 }
 
+data "template_file" "aws_s3_config_bucket_policy" {
+  template = "${file("${path.module}/aws_s3_config_bucket_policy.tpl")}"
+
+  vars {
+    s3_bucket_arn = "${aws_s3_bucket.config.arn}"
+  }
+}
+
 resource "aws_config_configuration_recorder" "config" {
   name     = "${var.aws_config_name}-config_recorder"
   role_arn = "${aws_iam_role.config.arn}"
 }
 
 resource "aws_config_configuration_recorder_status" "config" {
-  name       = "${var.aws_config_name}-config_recorder_status"
+  name       = "${aws_config_configuration_recorder.config.name}"
   is_enabled = true
   depends_on = ["aws_config_delivery_channel.config"]
 }
@@ -21,7 +29,6 @@ resource "aws_config_configuration_recorder_status" "config" {
 resource "aws_config_delivery_channel" "config" {
   name           = "${var.aws_config_name}-config_delivery_channel"
   s3_bucket_name = "${aws_s3_bucket.config.bucket}"
-  s3_key_prefix  = "q"
 }
 
 resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
@@ -167,17 +174,6 @@ resource "aws_config_config_rule" "CLOUDFORMATION_STACK_NOTIFICATION_CHECK" {
   depends_on = ["aws_config_configuration_recorder.config"]
 }
 
-resource "aws_config_config_rule" "CLOUDWATCH_ALARM_RESOURCE_CHECK" {
-  name = "${var.aws_config_name}-config_rule_S3_CLOUDWATCH_ALARM_CHECK"
-
-  source {
-    owner             = "AWS"
-    source_identifier = "CLOUDWATCH_ALARM_RESOURCE_CHECK"
-  }
-
-  depends_on = ["aws_config_configuration_recorder.config"]
-}
-
 resource "aws_iam_role" "config" {
   name               = "${var.aws_config_name}-config_iam_role"
   assume_role_policy = "${data.template_file.aws_iam_config_assume_role_policy.rendered}"
@@ -194,5 +190,11 @@ resource "aws_iam_role_policy_attachment" "config" {
 }
 
 resource "aws_s3_bucket" "config" {
-  bucket = "${var.aws_bucket_prefix}-config${length(var.aws_suffix) > 0 ? "-${var.aws_suffix}" : ""}"
+  bucket        = "${var.aws_bucket_prefix}-config${length(var.aws_suffix) > 0 ? "-${var.aws_suffix}" : ""}"
+  force_destroy = true
+}
+
+resource "aws_s3_bucket_policy" "config" {
+  bucket = "${aws_s3_bucket.config.id}"
+  policy = "${data.template_file.aws_s3_config_bucket_policy.rendered}"
 }

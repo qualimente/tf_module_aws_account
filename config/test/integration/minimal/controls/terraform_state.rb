@@ -17,7 +17,6 @@ control 'terraform_state' do
     #require 'pry'; binding.pry; #uncomment to jump into the debugger
 
     resources = tf_state_json.modules[1]['resources']
-
     describe 'configuration recorder' do
       config_recorder = resources['aws_config_configuration_recorder.config']['primary']
       config_recorder_attributes = config_recorder['attributes']
@@ -30,8 +29,8 @@ control 'terraform_state' do
 
     describe 'aws managed config rules' do
       describe 'IAM_PASSWORD_POLICY' do
-        aws_config_IAM_PASSWORD_POLICY_rule = ['aws_config_config_rule.IAM_PASSWORD_POLICY']['primary']
-        aws_config_IAM_PASSWORD_POLICY_rule_attributes = ['attributes']
+        aws_config_IAM_PASSWORD_POLICY_rule = resources['aws_config_config_rule.IAM_PASSWORD_POLICY']['primary']
+        aws_config_IAM_PASSWORD_POLICY_rule_attributes = aws_config_IAM_PASSWORD_POLICY_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_IAM_PASSWORD_POLICY_rule_attributes['name'] }
@@ -40,8 +39,8 @@ control 'terraform_state' do
       end
 
       describe 'S3_BUCKET_LOGGING_ENABLED' do
-        aws_config_S3_BUCKET_LOGGING_ENABLED_rule = ['aws_config_config_rule.S3_BUCKET_LOGGING_ENABLED']['primary']
-        aws_config_IAM_PASSWORD_POLICY_rule_attributes = ['attributes']
+        aws_config_S3_BUCKET_LOGGING_ENABLED_rule = resources['aws_config_config_rule.S3_BUCKET_LOGGING_ENABLED']['primary']
+        aws_config_S3_BUCKET_LOGGING_ENABLED_rule_attributes = aws_config_S3_BUCKET_LOGGING_ENABLED_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_LOGGING_ENABLED_rule_attributes['name'] }
@@ -50,8 +49,8 @@ control 'terraform_state' do
       end
 
       describe 'S3_BUCKET_PUBLIC_READ_PROHIBITED' do
-        aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule = ['aws_config_config_rule.S3_BUCKET_PUBLIC_READ_PROHIBITED']['primary']
-        aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule_attributes = ['attributes']
+        aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule = resources['aws_config_config_rule.S3_BUCKET_PUBLIC_READ_PROHIBITED']['primary']
+        aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule_attributes = aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule_attributes['name'] }
@@ -60,8 +59,8 @@ control 'terraform_state' do
       end
 
       describe 'S3_BUCKET_PUBLIC_WRITE_PROHIBITED' do
-        aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule = ['aws_config_config_rule.S3_BUCKET_PUBLIC_WRITE_PROHIBITED']['primary']
-        aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule_attributes = ['attributes']
+        aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule = resources['aws_config_config_rule.S3_BUCKET_PUBLIC_WRITE_PROHIBITED']['primary']
+        aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule_attributes = aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule_attributes['name'] }
@@ -70,8 +69,8 @@ control 'terraform_state' do
       end
 
       describe 'S3_BUCKET_SSL_REQUESTS_ONLY' do
-        aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule = ['aws_config_config_rule.S3_BUCKET_SSL_REQUESTS_ONLY']['primary']
-        aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule_attributes = ['attributes']
+        aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule = resources['aws_config_config_rule.S3_BUCKET_SSL_REQUESTS_ONLY']['primary']
+        aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule_attributes = aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule_attributes['name'] }
@@ -80,8 +79,8 @@ control 'terraform_state' do
       end
 
       describe 'S3_BUCKET_VERSIONING_ENABLED' do
-        aws_config_S3_BUCKET_VERSIONING_ENABLED_rule = ['aws_config_config_rule.S3_BUCKET_VERSIONING_ENABLED']['primary']
-        aws_config_S3_BUCKET_VERSIONING_ENABLED_rule_attributes = ['attributes']
+        aws_config_S3_BUCKET_VERSIONING_ENABLED_rule = resources['aws_config_config_rule.S3_BUCKET_VERSIONING_ENABLED']['primary']
+        aws_config_S3_BUCKET_VERSIONING_ENABLED_rule_attributes = aws_config_S3_BUCKET_VERSIONING_ENABLED_rule['attributes']
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_VERSIONING_ENABLED_rule_attributes['name'] }
@@ -90,15 +89,14 @@ control 'terraform_state' do
       end
 
       describe 'ACM_CERTIFICATE_EXPIRATION_CHECK' do
-        aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule = ['aws_config_config_rule.ACM_CERTIFICATE_EXPIRATION_CHECK']['primary']
-        aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule_attributes = ['attributes']
-
+        aws_config_S3_S3_ACM_CERT_CHECK_rule = resources['aws_config_config_rule.ACM_CERTIFICATE_EXPIRATION_CHECK']['primary']
+        aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes = aws_config_S3_S3_ACM_CERT_CHECK_rule['attributes']
+        puts aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes
         describe('set the name of the rule') do
-          subject { aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_ACM_CERTIFICATE_EXPIRATION_CHECK") }
+          subject { aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes['name'] }
+          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_ACM_CERT_CHECK") }
         end
       end
-
     end
   end
 end
