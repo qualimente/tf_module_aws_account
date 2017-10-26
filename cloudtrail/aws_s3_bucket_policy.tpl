@@ -21,9 +21,11 @@
             "Condition": {
                 "StringEquals": {
                     "s3:x-amz-acl": "bucket-owner-full-control"
+                },
+                "Bool": {
+                    "aws:SecureTransport": "true"
                 }
             }
         }
     ]
 }
-

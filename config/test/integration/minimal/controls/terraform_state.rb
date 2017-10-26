@@ -23,7 +23,7 @@ control 'terraform_state' do
 
       describe('set the name of the configuration recorder') do
         subject { config_recorder_attributes['name'] }
-        it { is_expected.to eq("testing-gjullianfk-config_recorder") }
+        it { is_expected.to match(/test-[\w]+-config_recorder/) }
       end
     end
 
@@ -34,7 +34,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_IAM_PASSWORD_POLICY_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_IAM_PASSWORD_POLICY") }
+          it { is_expected.to match(/test-[\w]+-config_rule_IAM_PASSWORD_POLICY/) }
         end
       end
 
@@ -44,7 +44,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_LOGGING_ENABLED_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_BUCKET_LOGGING_ENABLED") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_LOGGING_ENABLED/) }
         end
       end
 
@@ -54,7 +54,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_BUCKET_PUBLIC_READ_PROHIBITED") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_PUBLIC_READ_PROHIBITED/) }
         end
       end
 
@@ -64,7 +64,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_BUCKET_PUBLIC_WRITE_PROHIBITED") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_PUBLIC_WRITE_PROHIBITED/) }
         end
       end
 
@@ -74,7 +74,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_BUCKET_SSL_REQUESTS_ONLY") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_SSL_REQUESTS_ONLY/) }
         end
       end
 
@@ -84,7 +84,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_VERSIONING_ENABLED_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_BUCKET_VERSIONING_ENABLED") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_VERSIONING_ENABLED/) }
         end
       end
 
@@ -94,7 +94,7 @@ control 'terraform_state' do
         puts aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes
         describe('set the name of the rule') do
           subject { aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes['name'] }
-          it { is_expected.to eq("testing-gjullianfk-config_rule_S3_ACM_CERT_CHECK") }
+          it { is_expected.to match(/test-[\w]+-config_rule_S3_ACM_CERT_CHECK/) }
         end
       end
     end

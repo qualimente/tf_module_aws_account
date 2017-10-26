@@ -190,7 +190,7 @@ resource "aws_iam_role_policy_attachment" "config" {
 }
 
 resource "aws_s3_bucket" "config" {
-  bucket        = "${var.aws_bucket_prefix}-config${length(var.aws_suffix) > 0 ? "-${var.aws_suffix}" : ""}"
+  bucket        = "${var.s3_bucket_name}-config"
   force_destroy = true
 }
 
