@@ -16,7 +16,7 @@ data "template_file" "aws_s3_config_bucket_policy" {
 }
 
 resource "aws_config_configuration_recorder" "config" {
-  name     = "config_recorder-${var.aws_config_name}"
+  name     = "${var.aws_config_name}"
   role_arn = "${aws_iam_role.config.arn}"
 }
 
@@ -27,12 +27,12 @@ resource "aws_config_configuration_recorder_status" "config" {
 }
 
 resource "aws_config_delivery_channel" "config" {
-  name           = "${var.aws_config_name}-config_delivery_channel"
+  name           = "${var.aws_config_name}"
   s3_bucket_name = "${aws_s3_bucket.config.bucket}"
 }
 
 resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
-  name = "${var.aws_config_name}-config_rule_IAM_PASSWORD_POLICY"
+  name = "IAM_PASSWORD_POLICY-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -43,7 +43,7 @@ resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
 }
 
 resource "aws_config_config_rule" "S3_BUCKET_LOGGING_ENABLED" {
-  name = "${var.aws_config_name}-config_rule_S3_BUCKET_LOGGING_ENABLED"
+  name = "S3_BUCKET_LOGGING_ENABLED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -54,7 +54,7 @@ resource "aws_config_config_rule" "S3_BUCKET_LOGGING_ENABLED" {
 }
 
 resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_READ_PROHIBITED" {
-  name = "${var.aws_config_name}-config_rule_S3_BUCKET_PUBLIC_READ_PROHIBITED"
+  name = "S3_BUCKET_PUBLIC_READ_PROHIBITED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -65,7 +65,7 @@ resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_READ_PROHIBITED" {
 }
 
 resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_WRITE_PROHIBITED" {
-  name = "${var.aws_config_name}-config_rule_S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+  name = "S3_BUCKET_PUBLIC_WRITE_PROHIBITED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -76,7 +76,7 @@ resource "aws_config_config_rule" "S3_BUCKET_PUBLIC_WRITE_PROHIBITED" {
 }
 
 resource "aws_config_config_rule" "S3_BUCKET_SSL_REQUESTS_ONLY" {
-  name = "${var.aws_config_name}-config_rule_S3_BUCKET_SSL_REQUESTS_ONLY"
+  name = "S3_BUCKET_SSL_REQUESTS_ONLY-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -87,7 +87,7 @@ resource "aws_config_config_rule" "S3_BUCKET_SSL_REQUESTS_ONLY" {
 }
 
 resource "aws_config_config_rule" "S3_BUCKET_VERSIONING_ENABLED" {
-  name = "${var.aws_config_name}-config_rule_S3_BUCKET_VERSIONING_ENABLED"
+  name = "S3_BUCKET_VERSIONING_ENABLED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -98,7 +98,7 @@ resource "aws_config_config_rule" "S3_BUCKET_VERSIONING_ENABLED" {
 }
 
 resource "aws_config_config_rule" "ACM_CERTIFICATE_EXPIRATION_CHECK" {
-  name = "${var.aws_config_name}-config_rule_S3_ACM_CERT_CHECK"
+  name = "ACM_CERTIFICATE_EXPIRATION_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -109,7 +109,7 @@ resource "aws_config_config_rule" "ACM_CERTIFICATE_EXPIRATION_CHECK" {
 }
 
 resource "aws_config_config_rule" "IAM_USER_GROUP_MEMBERSHIP_CHECK" {
-  name = "${var.aws_config_name}-config_rule_S3_IAM_USER_GROUP_CHECK"
+  name = "IAM_USER_GROUP_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -120,7 +120,7 @@ resource "aws_config_config_rule" "IAM_USER_GROUP_MEMBERSHIP_CHECK" {
 }
 
 resource "aws_config_config_rule" "IAM_USER_NO_POLICIES_CHECK" {
-  name = "${var.aws_config_name}-config_rule_S3_IAM_USER_NO_POLICIES_CHECK"
+  name = "IAM_USER_NO_POLICIES_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -131,7 +131,7 @@ resource "aws_config_config_rule" "IAM_USER_NO_POLICIES_CHECK" {
 }
 
 resource "aws_config_config_rule" "ROOT_ACCOUNT_MFA_ENABLED" {
-  name = "${var.aws_config_name}-config_rule_S3_ROOT_ACCOUNT_MFA_ENABLED"
+  name = "ROOT_ACCOUNT_MFA_ENABLED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -142,7 +142,7 @@ resource "aws_config_config_rule" "ROOT_ACCOUNT_MFA_ENABLED" {
 }
 
 resource "aws_config_config_rule" "CLOUD_TRAIL_ENABLED" {
-  name = "${var.aws_config_name}-config_rule_CLOUD_TRAIL_ENABLED"
+  name = "CLOUD_TRAIL_ENABLED-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -153,7 +153,7 @@ resource "aws_config_config_rule" "CLOUD_TRAIL_ENABLED" {
 }
 
 resource "aws_config_config_rule" "INSTANCES_IN_VPC" {
-  name = "${var.aws_config_name}-config_rule_S3_INSTANCES_IN_VPC"
+  name = "INSTANCES_IN_VPC-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -164,7 +164,7 @@ resource "aws_config_config_rule" "INSTANCES_IN_VPC" {
 }
 
 resource "aws_config_config_rule" "CLOUDFORMATION_STACK_NOTIFICATION_CHECK" {
-  name = "${var.aws_config_name}-config_rule_S3_CLOUDFORMATION_CHECK"
+  name = "CLOUDFORMATION_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"

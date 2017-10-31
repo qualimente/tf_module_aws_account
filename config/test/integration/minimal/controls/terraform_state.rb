@@ -20,7 +20,7 @@ control 'terraform_state' do
     
     describe('config.config_recorder_id') do
       subject { outputs['config.config_recorder_id']['value'] }
-      it { is_expected.to match(/config_recorder-test-[\w]+/) }
+      it { is_expected.to match(/test-[\w]+/) }
     end
 
     describe('config.iam_role_name') do
@@ -49,7 +49,7 @@ control 'terraform_state' do
 
       describe('set the name of the configuration recorder') do
         subject { config_recorder_attributes['name'] }
-        it { is_expected.to match(/config_recorder-test-[\w]+/) }
+        it { is_expected.to match(/test-[\w]+/) }
       end
     end
 
@@ -60,7 +60,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_IAM_PASSWORD_POLICY_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_IAM_PASSWORD_POLICY/) }
+          it { is_expected.to match(/IAM_PASSWORD_POLICY-test-[\w]+/) }
         end
       end
 
@@ -70,7 +70,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_LOGGING_ENABLED_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_LOGGING_ENABLED/) }
+          it { is_expected.to match(/S3_BUCKET_LOGGING_ENABLED-test-[\w]+/) }
         end
       end
 
@@ -80,7 +80,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_READ_PROHIBITED_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_PUBLIC_READ_PROHIBITED/) }
+          it { is_expected.to match(/S3_BUCKET_PUBLIC_READ_PROHIBITED-test-[\w]+/) }
         end
       end
 
@@ -90,7 +90,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_PUBLIC_WRITE_PROHIBITED_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_PUBLIC_WRITE_PROHIBITED/) }
+          it { is_expected.to match(/S3_BUCKET_PUBLIC_WRITE_PROHIBITED-test-[\w]+/) }
         end
       end
 
@@ -100,7 +100,7 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_SSL_REQUESTS_ONLY_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_SSL_REQUESTS_ONLY/) }
+          it { is_expected.to match(/S3_BUCKET_SSL_REQUESTS_ONLY-test-[\w]+/) }
         end
       end
 
@@ -110,17 +110,17 @@ control 'terraform_state' do
 
         describe('set the name of the rule') do
           subject { aws_config_S3_BUCKET_VERSIONING_ENABLED_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_BUCKET_VERSIONING_ENABLED/) }
+          it { is_expected.to match(/S3_BUCKET_VERSIONING_ENABLED-test-[\w]+/) }
         end
       end
 
       describe 'ACM_CERTIFICATE_EXPIRATION_CHECK' do
-        aws_config_S3_S3_ACM_CERT_CHECK_rule = resources['aws_config_config_rule.ACM_CERTIFICATE_EXPIRATION_CHECK']['primary']
-        aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes = aws_config_S3_S3_ACM_CERT_CHECK_rule['attributes']
-        puts aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes
+        aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule = resources['aws_config_config_rule.ACM_CERTIFICATE_EXPIRATION_CHECK']['primary']
+        aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule_attributes = aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule['attributes']
+        puts aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule_attributes
         describe('set the name of the rule') do
-          subject { aws_config_S3_S3_ACM_CERT_CHECK_rule_attributes['name'] }
-          it { is_expected.to match(/test-[\w]+-config_rule_S3_ACM_CERT_CHECK/) }
+          subject { aws_config_ACM_CERTIFICATE_EXPIRATION_CHECK_rule_attributes['name'] }
+          it { is_expected.to match(/ACM_CERTIFICATE_EXPIRATION_CHECK-test-[\w]+/) }
         end
       end
     end
