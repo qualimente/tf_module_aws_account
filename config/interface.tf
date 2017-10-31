@@ -14,10 +14,6 @@ output "config.config_recorder_arn" {
   value = "${aws_config_configuration_recorder.config.arn}"
 }
 
-output "config.s3_bucket" {
-  value = "${aws_s3_bucket.config.bucket}"
-}
-
 output "config.s3_bucket_id" {
   value = "${aws_s3_bucket.config.id}"
 }
