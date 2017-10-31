@@ -7,7 +7,7 @@
         "Service": "config.amazonaws.com"
       },
       "Effect": "Allow",
-      "Sid": ""
+      "Sid": "AllowAssumeRoleForConfig"
     }
   ]
 }

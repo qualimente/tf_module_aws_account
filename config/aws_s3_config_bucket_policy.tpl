@@ -2,7 +2,7 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "AWSCloudTrailAclCheck",
+      "Sid": "ConfigBucketAclCheck",
       "Effect": "Allow",
       "Principal": {
         "Service": "config.amazonaws.com"
@@ -11,7 +11,7 @@
       "Resource": "${s3_bucket_arn}"
     },
     {
-      "Sid": "AWSCloudTrailWrite",
+      "Sid": "ConfigBucketWrite",
       "Effect": "Allow",
       "Principal": {
         "Service": "config.amazonaws.com"
