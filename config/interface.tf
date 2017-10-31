@@ -10,8 +10,8 @@ variable "s3_bucket_name" {
 }
 
 // Outputs
-output "config.config_recorder_arn" {
-  value = "${aws_config_configuration_recorder.config.arn}"
+output "config.config_recorder_id" {
+  value = "${aws_config_configuration_recorder.config.id}"
 }
 
 output "config.s3_bucket_id" {

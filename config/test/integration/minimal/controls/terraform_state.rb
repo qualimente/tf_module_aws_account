@@ -16,6 +16,32 @@ control 'terraform_state' do
   describe 'the Terraform state file' do
     #require 'pry'; binding.pry; #uncomment to jump into the debugger
 
+    outputs = tf_state_json.modules[1]['outputs']
+    
+    describe('config.config_recorder_id') do
+      subject { outputs['config.config_recorder_id']['value'] }
+      it { is_expected.to match(/config_recorder-test-[\w]+/) }
+    end
+
+    describe('config.iam_role_name') do
+      subject { outputs['config.iam_role_name']['value'] }
+      it { is_expected.to match(/AR-Config-[\w]+/) }
+    end
+    describe('config.iam_role_arn') do
+      subject { outputs['config.iam_role_arn']['value'] }
+      it { is_expected.to match(/arn:aws:iam::[\d]+:role\/AR-Config-[\w]+/) }
+    end
+
+    describe('config.s3_bucket_id') do
+      subject { outputs['config.s3_bucket_id']['value'] }
+      it { is_expected.to match(/^qm-infra-module-config-test-[\w]+/)}
+    end
+    describe('config.s3_bucket_arn') do
+      subject { outputs['config.s3_bucket_arn']['value'] }
+      it { is_expected.to match(/^arn:aws:s3:::qm-infra-module-config-test-[\w]+/)}
+    end
+    
+
     resources = tf_state_json.modules[1]['resources']
     describe 'configuration recorder' do
       config_recorder = resources['aws_config_configuration_recorder.config']['primary']
@@ -23,7 +49,7 @@ control 'terraform_state' do
 
       describe('set the name of the configuration recorder') do
         subject { config_recorder_attributes['name'] }
-        it { is_expected.to match(/test-[\w]+-config_recorder/) }
+        it { is_expected.to match(/config_recorder-test-[\w]+/) }
       end
     end
 

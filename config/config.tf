@@ -16,7 +16,7 @@ data "template_file" "aws_s3_config_bucket_policy" {
 }
 
 resource "aws_config_configuration_recorder" "config" {
-  name     = "${var.aws_config_name}-config_recorder"
+  name     = "config_recorder-${var.aws_config_name}"
   role_arn = "${aws_iam_role.config.arn}"
 }
 
@@ -175,12 +175,12 @@ resource "aws_config_config_rule" "CLOUDFORMATION_STACK_NOTIFICATION_CHECK" {
 }
 
 resource "aws_iam_role" "config" {
-  name               = "${var.aws_config_name}-config_iam_role"
+  name               = "AR-Config-${var.aws_config_name}"
   assume_role_policy = "${data.template_file.aws_iam_config_assume_role_policy.rendered}"
 }
 
 resource "aws_iam_policy" "config" {
-  name   = "${var.aws_config_name}-config_iam_policy"
+  name   = "Config-${var.aws_config_name}"
   policy = "${data.template_file.aws_iam_config_policy.rendered}"
 }
 
