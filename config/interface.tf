@@ -14,6 +14,10 @@ output "config.config_recorder_arn" {
   value = "${aws_config_configuration_recorder.config.arn}"
 }
 
+output "config.s3_bucket" {
+  value = "${aws_s3_bucket.config.bucket}"
+}
+
 output "config.s3_bucket_id" {
   value = "${aws_s3_bucket.config.id}"
 }
@@ -26,6 +30,6 @@ output "config.iam_role_name" {
   value = "${aws_iam_role.config.name}"
 }
 
-output "congig.iam_role_arn" {
+output "config.iam_role_arn" {
   value = "${aws_iam_role.config.arn}"
 }
