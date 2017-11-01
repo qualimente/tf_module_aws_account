@@ -109,7 +109,7 @@ resource "aws_config_config_rule" "ACM_CERTIFICATE_EXPIRATION_CHECK" {
 }
 
 resource "aws_config_config_rule" "IAM_USER_GROUP_MEMBERSHIP_CHECK" {
-  name = "IAM_USER_GROUP_CHECK-${var.aws_config_name}"
+  name = "IAM_USER_GROUP_MEMBERSHIP_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"
@@ -164,7 +164,7 @@ resource "aws_config_config_rule" "INSTANCES_IN_VPC" {
 }
 
 resource "aws_config_config_rule" "CLOUDFORMATION_STACK_NOTIFICATION_CHECK" {
-  name = "CLOUDFORMATION_CHECK-${var.aws_config_name}"
+  name = "CLOUDFORMATION_STACK_NOTIFICATION_CHECK-${var.aws_config_name}"
 
   source {
     owner             = "AWS"

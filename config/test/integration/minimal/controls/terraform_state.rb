@@ -63,6 +63,12 @@ control 'terraform_state' do
           'S3_BUCKET_SSL_REQUESTS_ONLY',
           'S3_BUCKET_VERSIONING_ENABLED',
           'ACM_CERTIFICATE_EXPIRATION_CHECK',
+          'IAM_USER_GROUP_MEMBERSHIP_CHECK',
+          'IAM_USER_NO_POLICIES_CHECK',
+          'ROOT_ACCOUNT_MFA_ENABLED',
+          'CLOUD_TRAIL_ENABLED',
+          'INSTANCES_IN_VPC',
+          'CLOUDFORMATION_STACK_NOTIFICATION_CHECK',
       ].each do |rule_name|
         rule = resources["aws_config_config_rule.#{rule_name}"]['primary']
         rule_attributes = rule['attributes']
