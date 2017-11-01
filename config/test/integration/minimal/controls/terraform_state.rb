@@ -78,6 +78,10 @@ control 'terraform_state' do
             subject { rule_attributes['name'] }
             it { is_expected.to match(/#{Regexp.quote(rule_name)}-test-[\w]+/) }
           end
+          describe("arn") do
+            subject { rule_attributes['arn'] }
+            it { is_expected.to match(/arn:aws:config:[\w-]+:[\d]+:config-rule\/config-rule-[\w]+/) }
+          end
         end
       end
     end
