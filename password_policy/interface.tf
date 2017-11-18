@@ -42,5 +42,5 @@ variable "aws_password_allow_change_by_user" {
 
 variable "aws_password_expiration_lock" {
   description = "at login check for expiring password and lock if expired, default set to true"
-  default     = true
+  default     = false
 }

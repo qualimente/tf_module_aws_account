@@ -50,12 +50,12 @@ control 'terraform_state' do
 
         describe('minimum length for password') do
           subject { attributes['minimum_password_length'] }
-          it { is_expected.to eq("12") }
+          it { is_expected.to eq("14") }
         end
 
         describe('password reuse check for how many previous passwords') do
           subject { attributes['password_reuse_prevention'] }
-          it { is_expected.to eq("12") }
+          it { is_expected.to eq("24") }
         end
 
         describe('require lowercase characters in password') do
@@ -70,7 +70,7 @@ control 'terraform_state' do
 
         describe('require symbols in password') do
           subject { attributes['require_symbols'] }
-          it { is_expected.to eq("false") }
+          it { is_expected.to eq("true") }
         end
 
         describe('require uppercase characters in password') do
