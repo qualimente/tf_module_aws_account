@@ -1,9 +1,8 @@
 // Setup a default password_policy variables
 
-//Variables
 variable "aws_password_minimum_length" {
   description = "The mimimum length of password to apply."
-  default     = "10"
+  default     = "14"
 }
 
 variable "aws_password_require_lowercase" {
@@ -32,8 +31,8 @@ variable "aws_password_max_age" {
 }
 
 variable "aws_password_reuse" {
-  description = "Defines number of previous passwords to check against for reuse, default 16"
-  default     = "8"
+  description = "Defines number of previous passwords to check against for reuse, default 24"
+  default     = "24"
 }
 
 variable "aws_password_allow_change_by_user" {
@@ -43,5 +42,5 @@ variable "aws_password_allow_change_by_user" {
 
 variable "aws_password_expiration_lock" {
   description = "at login check for expiring password and lock if expired, default set to true"
-  default     = true
+  default     = false
 }
