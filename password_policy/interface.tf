@@ -1,6 +1,5 @@
 // Setup a default password_policy variables
 
-//Variables
 variable "aws_password_minimum_length" {
   description = "The mimimum length of password to apply."
   default     = "14"
