@@ -19,9 +19,7 @@ resource "aws_s3_bucket" "bucket" {
 
   force_destroy = "${var.s3_force_destroy}"
 
-  tags = {
-    terraform = "true"
-  }
+  tags = "${merge(map("terraform", "true"), var.tags)}"
 
   // https://github.com/hashicorp/terraform/issues/13631
   // There is a race condition between creation of IAM/S3 resources and when they are visible to Cloudtrail

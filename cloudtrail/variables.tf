@@ -52,3 +52,8 @@ variable "is_multi_region_trail" {
   description = "Whether the trail is created in all regions or just the current region."
   default     = true
 }
+
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  default     = {}
+}

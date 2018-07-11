@@ -16,9 +16,7 @@ data "template_file" "aws_iam_cloudtrail_to_cloudwatch_policy" {
 resource "aws_cloudwatch_log_group" "ct" {
   name = "/aws/cloudtrail/${var.aws_cloudtrail_name}"
 
-  tags {
-    terraform = "true"
-  }
+  tags = "${merge(map("terraform", "true"), var.tags)}"
 
   depends_on = ["aws_iam_role_policy.ct", "aws_s3_bucket_policy.bucket"]
 }
